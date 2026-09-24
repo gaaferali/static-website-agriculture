@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -62,10 +62,20 @@ function Detail() {
 
 function Contact() {
   const selected = (useLocation().state as { service?: string } | null)?.service ?? '';
-  return <main className="section"><div className="container contact"><section className="contact-image"><img src={media('03-agricultural-advisory.jpg')} alt="Agricultural advisor in the field" /><div><p className="eyebrow">GREENHARVEST AGRICULTURE</p><h1>Let’s plan the next season with confidence.</h1><p>Commercial farm development, water systems, and field intelligence for practical growth.</p></div></section><form><p className="eyebrow dark">CONTACT US</p><h2>Start your project.</h2><p>Tell us about your farm, land, or agricultural operation and our team will be in touch.</p><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@email.com" /></label><label>Service required<select defaultValue={selected}><option value="">Choose a service</option>{services.map((service) => <option key={service.slug}>{service.title}</option>)}</select></label><label>Description<textarea placeholder="Tell us how we can help" /></label><button className="button button-primary" type="submit">Send message</button></form></div></main>;
+  return <><Hero /><main className="section"><div className="container contact"><section className="contact-image"><img src={media('04-efficient-irrigation.jpg')} alt="Efficient irrigation system watering healthy crops" /><div><p className="eyebrow">GREENHARVEST AGRICULTURE</p><h1>Let’s plan the next season with confidence.</h1><p>Commercial farm development, water systems, and field intelligence for practical growth.</p></div></section><form><p className="eyebrow dark">CONTACT US</p><h2>Start your project.</h2><p>Tell us about your farm, land, or agricultural operation and our team will be in touch.</p><label>Name<input required placeholder="Your name" /></label><label>Email<input required type="email" placeholder="you@email.com" /></label><label>Service required<select defaultValue={selected}><option value="">Choose a service</option>{services.map((service) => <option key={service.slug}>{service.title}</option>)}</select></label><label>Description<textarea placeholder="Tell us how we can help" /></label><button className="button button-primary" type="submit">Send message</button></form></div></main></>;
 }
 
-function Footer() { return <footer><div className="container footer-grid"><div><Logo /><p>Agricultural company dedicated to innovative, sustainable solutions for real farm challenges.</p></div><div><b>WHY CHOOSE US</b><p>Experienced professionals<br />Modern farming technology<br />Practical solutions<br />Focus on productivity and efficiency</p></div><div><b>CONTACT US</b><p>+(249) 991-0188<br />hello@greenharvest.org<br />128 Khartoum Omdurman, Rural District</p></div></div><div className="container copyright">© 2026 GreenHarvest Agriculture. All rights reserved.</div></footer>; }
+function Footer() { return <footer><div className="container footer-grid"><div><Logo /><p>Agricultural company dedicated to innovative, sustainable solutions for real farm challenges.</p></div><div><b>NAVIGATION</b><nav className="footer-nav" aria-label="Footer navigation"><Link to="/">Home</Link><a href="/#about">About Us</a><a href="/#services">Services</a><Link to="/contact">Contact Us</Link><a href="/#ai-services">AI Service</a></nav></div><div><b>WHY CHOOSE US</b><p>Experienced professionals<br />Modern farming technology<br />Practical solutions<br />Focus on productivity and efficiency</p></div><div><b>CONTACT US</b><p>+(249) 991-0188<br />hello@greenharvest.org<br />128 Khartoum Omdurman, Rural District</p></div></div><div className="container copyright">© 2026 GreenHarvest Agriculture. All rights reserved.</div></footer>; }
 
-function App() { return <><Header /><Routes><Route path="/" element={<Home />} /><Route path="/services/:slug" element={<Detail />} /><Route path="/contact" element={<Contact />} /></Routes><Footer /></>; }
+function ScrollToTop() {
+  const { hash, pathname } = useLocation();
+
+  useEffect(() => {
+    if (!hash) window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [hash, pathname]);
+
+  return null;
+}
+
+function App() { return <><ScrollToTop /><Header /><Routes><Route path="/" element={<Home />} /><Route path="/services/:slug" element={<Detail />} /><Route path="/contact" element={<Contact />} /></Routes><Footer /></>; }
 createRoot(document.getElementById('root')!).render(<BrowserRouter><App /></BrowserRouter>);

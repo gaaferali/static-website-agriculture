@@ -23,3 +23,179 @@ footer { padding:54px 0 18px; background:#e6f0e5; color:#45604d; }.footer-grid {
 @media (max-width:800px) {
   .topbar nav { max-height:calc(100vh - 90px); overflow-y:auto; }
 }
+
+/* Contact hero follows the homepage hero design system. */
+.contact { width:min(1180px, calc(100% - 48px)); }
+.contact-image { min-height:600px; align-items:center; padding:72px 56px; border-radius:0 0 0 55px; }
+.contact-image::after { background:linear-gradient(115deg,rgba(18,61,41,.9),rgba(18,61,41,.35) 68%,rgba(18,61,41,.2)); }
+.contact-image div { max-width:540px; }
+.contact-image h1 { max-width:540px; font-size:68px; line-height:1.04; }
+.contact-image .eyebrow { color:#d4f0d7; font-size:12px; }
+.contact form { border-radius:0 0 55px 0; }
+@media (max-width:800px) {
+  .contact { width:calc(100% - 32px); }
+  .contact-image { min-height:460px; padding:48px 32px; border-radius:0; }
+  .contact-image h1 { font-size:48px; }
+  .contact form { border-radius:0; }
+}
+@media (max-width:480px) {
+  .contact-image { min-height:390px; padding:34px 24px; }
+  .contact-image h1 { font-size:42px; }
+}
+
+/* Shared header/hero image treatment requested for Home, Contact, and services. */
+.home-hero,
+.service-hero {
+  background-image:
+    linear-gradient(90deg, rgba(18, 67, 45, .88) 0%, rgba(46, 112, 70, .72) 52%, rgba(102, 164, 86, .54) 100%),
+    url('/media/08-home-agriculture-agency.jpg');
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size:cover;
+}
+
+.hero {
+  position:relative;
+  overflow:hidden;
+}
+
+.hero > .container,
+.contact-image > div {
+  position:relative;
+  z-index:1;
+}
+
+.home-hero .eyebrow,
+.service-hero .eyebrow {
+  color:#d4f0d7;
+}
+
+.home-hero .hero-copy .eyebrow,
+.service-hero .hero-copy .eyebrow {
+  color:#d4f0d7;
+}
+
+.home-hero h1,
+.service-hero h1,
+.home-hero .hero-lead,
+.service-hero .hero-lead {
+  color:#fff;
+  text-shadow:0 2px 18px rgba(7, 32, 19, .2);
+}
+
+.home-hero .hero-body,
+.service-hero .hero-body {
+  color:#edf7ee;
+}
+
+.home-hero .button-secondary {
+  background:rgba(255,255,255,.96);
+}
+
+.contact {
+  grid-template-columns:minmax(0, .95fr) minmax(0, 1.05fr);
+  align-items:stretch;
+}
+
+.contact-image {
+  min-height:600px;
+  padding:0;
+  align-items:flex-end;
+  border-radius:18px 0 0 18px;
+  background:none;
+}
+
+.contact-image::after {
+  z-index:0;
+  background:linear-gradient(0deg, rgba(8, 38, 24, .88), rgba(24, 56, 32, .16) 72%);
+}
+
+.contact-image img {
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+
+.contact-image div {
+  max-width:520px;
+  padding:42px;
+}
+
+.contact-image h1 {
+  max-width:480px;
+  font-size:44px;
+  line-height:1.12;
+  text-shadow:0 2px 18px rgba(7, 32, 19, .2);
+}
+
+.contact-image p:last-child {
+  max-width:410px;
+  text-shadow:0 2px 18px rgba(7, 32, 19, .2);
+}
+
+.contact form {
+  justify-content:center;
+  border-radius:0 18px 18px 0;
+}
+
+@media (max-width:800px) {
+  .contact {
+    grid-template-columns:1fr;
+  }
+
+  .contact-image {
+    min-height:360px;
+    border-radius:14px 14px 0 0;
+  }
+
+  .contact-image div {
+    padding:34px 25px;
+  }
+
+  .contact-image h1 {
+    font-size:38px;
+  }
+
+  .contact form {
+    border-radius:0 0 14px 14px;
+  }
+}
+
+@media (max-width:480px) {
+  .contact-image {
+    min-height:310px;
+  }
+
+  .contact-image h1 {
+    font-size:32px;
+  }
+}
+
+.footer-nav {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:8px;
+  font-size:14px;
+  line-height:1.75;
+}
+
+.footer-nav a {
+  color:#45604d;
+  transition:color .2s;
+}
+
+.footer-nav a:hover {
+  color:var(--forest);
+}
+
+@media (min-width:801px) {
+  .footer-grid {
+    grid-template-columns:1.4fr .75fr 1fr 1fr;
+    gap:40px;
+  }
+}
